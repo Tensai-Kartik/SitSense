@@ -94,27 +94,27 @@ flowchart TD
 ### 1. Scale-Invariant Thoracic Slouch & Kyphosis Compression
 To eliminate distance ambiguity from monocular 2D webcams, vertical cranial displacement is normalized against the instantaneous Euclidean shoulder span:
 
-$$\text{ShoulderWidth} = \sqrt{(X_{\text{R\_Shoulder}} - X_{\text{L\_Shoulder}})^2 + (Y_{\text{R\_Shoulder}} - Y_{\text{L\_Shoulder}})^2}$$
+$$\text{ShoulderWidth} = \sqrt{(X_{\text{Right}} - X_{\text{Left}})^2 + (Y_{\text{Right}} - Y_{\text{Left}})^2}$$
 
-$$\text{NoseToShoulderDist} = \frac{Y_{\text{Shoulder\_Midpoint}} - Y_{\text{Nose}}}{\text{ShoulderWidth}}$$
+$$\text{NoseToShoulderDist} = \frac{Y_{\text{ShoulderMid}} - Y_{\text{Nose}}}{\text{ShoulderWidth}}$$
 
 $$\text{SlouchScore} = \min\left(1.0, \max\left(0, \frac{\text{BaselineDist} - \text{NoseToShoulderDist}}{\text{BaselineDist}} \times 1.6\right)\right)$$
 
 ### 2. Cranial Forward Head Pitch
 Calculated as the angle deviation of the ear midpoint relative to the shoulder midpoint against the vertical gravity axis:
 
-$$\theta_{\text{ForwardHead}} = \left| \operatorname{atan2}(X_{\text{Ear\_Mid}} - X_{\text{Shoulder\_Mid}}, Y_{\text{Shoulder\_Mid}} - Y_{\text{Ear\_Mid}}) \right| \times \frac{180^\circ}{\pi}$$
+$$\theta_{\text{ForwardHead}} = \left| \text{atan2}(X_{\text{EarMid}} - X_{\text{ShoulderMid}},\, Y_{\text{ShoulderMid}} - Y_{\text{EarMid}}) \right| \times \frac{180^\circ}{\pi}$$
 
 ### 3. Shoulder Slope Asymmetry (Lateral Tilt)
-$$\theta_{\text{ShoulderSlope}} = \min\left(\theta_{\text{raw}}, |180^\circ - \theta_{\text{raw}}|\right) \quad \text{where} \quad \theta_{\text{raw}} = \left| \operatorname{atan2}(\Delta Y_{\text{Shoulder}}, \Delta X_{\text{Shoulder}}) \right| \times \frac{180^\circ}{\pi}$$
+$$\theta_{\text{ShoulderSlope}} = \min\left(\theta_{\text{raw}},\, |180^\circ - \theta_{\text{raw}}|\right) \quad \text{where} \quad \theta_{\text{raw}} = \left| \text{atan2}(\Delta Y_{\text{Shoulder}},\, \Delta X_{\text{Shoulder}}) \right| \times \frac{180^\circ}{\pi}$$
 
 ### 4. Facial Micro-Jitter Spatial Variance (Liveness Verification)
 $$\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} \left( (X_{\text{Nose}, i} - \bar{X}_{\text{Nose}})^2 + (Y_{\text{Nose}, i} - \bar{Y}_{\text{Nose}})^2 \right)$$
 
-$$\text{Status} = \begin{cases} \text{STATIC\_WARNING} & \text{if } \sigma^2 < 0.00008 \text{ for } N \ge 35 \\ \text{LIVE\_HIGH} & \text{otherwise} \end{cases}$$
+$$\text{Status} = \begin{cases} \text{STATIC-WARNING} & \text{if } \sigma^2 < 0.00008 \text{ for } N \ge 35 \\ \text{LIVE-HIGH} & \text{otherwise} \end{cases}$$
 
 ### 5. ITU-R BT.601 Camera Luminance Check
-$$Y = \frac{1}{1024} \sum_{i=1}^{32 \times 32} \left( 0.299 R_i + 0.587 G_i + 0.114 B_i \right)$$
+$$Y = \frac{1}{1024} \sum_{i=1}^{1024} \left( 0.299 R_i + 0.587 G_i + 0.114 B_i \right)$$
 
 ---
 
