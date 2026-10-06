@@ -51,14 +51,18 @@ export const Header: React.FC<Props> = ({
   return (
     <header className="sticky top-0 z-30 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80 px-4 md:px-8 py-3.5 flex items-center justify-between">
       {/* Mobile Title & Menu Toggle */}
-      <div className="flex items-center gap-3 md:hidden">
+      <div className="flex items-center gap-2.5 md:hidden">
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300"
+          className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white"
+          aria-label="Toggle navigation menu"
         >
           <Menu className="w-5 h-5" />
         </button>
-        <span className="font-extrabold text-white text-base">SitSense</span>
+        <div className="flex items-center gap-2">
+          <img src="/logo.png" alt="SitSense" className="w-7 h-7 object-contain rounded-lg" />
+          <span className="font-extrabold text-white text-base tracking-tight">SitSense</span>
+        </div>
       </div>
 
       {/* Desktop Subtitle / Breadcrumb */}

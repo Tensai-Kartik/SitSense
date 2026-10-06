@@ -51,9 +51,11 @@ export const Sidebar: React.FC<Props> = ({
       {/* Brand Header & Navigation */}
       <div className="p-6 space-y-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-slate-950 font-extrabold shadow-lg glow-teal">
-            <Activity className="w-5 h-5" />
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="SitSense Logo" 
+            className="w-10 h-10 object-contain rounded-2xl shadow-md glow-teal" 
+          />
           <div>
             <h1 className="text-lg font-extrabold text-white tracking-tight flex items-center gap-1.5">
               <span>SitSense</span>

@@ -35,7 +35,7 @@ export const DemoToolbar: React.FC<DemoControllerProps> = ({
 }) => {
   if (!isDemoActive) {
     return (
-      <div className="fixed bottom-5 right-5 z-40">
+      <div className="fixed bottom-16 md:bottom-5 right-4 md:right-5 z-40">
         <button
           onClick={() => onToggleDemo(true)}
           className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-bold text-xs shadow-lg hover:scale-105 transition-all glow-amber"
@@ -50,7 +50,7 @@ export const DemoToolbar: React.FC<DemoControllerProps> = ({
   return (
     <aside
       aria-label="Interactive demo mode simulation controls"
-      className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:w-[460px] z-40 bg-slate-900/95 border-2 border-amber-500/50 rounded-3xl p-4 shadow-2xl backdrop-blur-xl animate-slide-up text-xs space-y-3.5"
+      className="fixed bottom-16 md:bottom-4 left-3 right-3 md:left-auto md:right-6 md:w-[460px] z-40 bg-slate-900/95 border-2 border-amber-500/50 rounded-3xl p-4 shadow-2xl backdrop-blur-xl animate-slide-up text-xs space-y-3.5"
     >
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
